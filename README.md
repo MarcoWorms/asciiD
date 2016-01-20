@@ -7,4 +7,4 @@ Alpha version preview
 
 https://jsfiddle.net/0y2tfmsv/
 
-![Alt text](http://i.imgur.com/FzqabzU.png?1 "Preview")
+![Alt text](http://imgur.com/HjnvMVc "Preview")

@@ -14,7 +14,7 @@ Intended features to be developed (in priority order):
 
 ## v0.0.2
 
-https://jsfiddle.net/0y2tfmsv/1/
+Preview: https://jsfiddle.net/0y2tfmsv/1/
 
 ![Alt text](http://i.imgur.com/HjnvMVc.png "Preview")
 

@@ -11,6 +11,7 @@ Intended features to be developed (in priority order):
 - A more organized way to separate static objects (like background) from game objects (like a player or a monster)
 - Independent camera, this will allow the field to be as big as you want, only rendering the parts you need.
 - Ascii sprite and spritesheet editor made for this engine (the dream)
+- Import spritesheets from pastebin (or other pastie sites)
 
 ## v0.0.2
 

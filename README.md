@@ -5,6 +5,6 @@ A HTML5 ASCII game engine built with love and ES6
 
 Alpha version preview
 
-https://jsfiddle.net/0y2tfmsv/
+https://jsfiddle.net/0y2tfmsv/1/
 
 ![Alt text](http://i.imgur.com/HjnvMVc.png "Preview")

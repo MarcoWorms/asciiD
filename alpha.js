@@ -1,13 +1,19 @@
 'use strict';
 
 class AuxiliarFunctions {
-  generateEmptyField() {
+  generateEmptyField(char) {
+
+    //needs es6 implementation when chrome decides to add optional params
+    if (char === undefined) {
+      char = '&nbsp'
+    }
+
     let field = [];
 
     for (let i = 0; i < 30; i += 1) {
       let field_rows = [];
       for (let k = 0; k < 66; k += 1) {
-        field_rows.push(['&nbsp']);
+        field_rows.push([char]);
       }
       field.push(field_rows);
     }
@@ -16,14 +22,16 @@ class AuxiliarFunctions {
   }
 }
 
-class Engine extends AuxiliarFunctions {
+class Engine {
 
   constructor(divId) {
-    super();
+    this.auxiliarFunctions = new AuxiliarFunctions();
+
+    // injects the game on the div provided by the user
     let div = document.getElementById(divId);
     div.innerHTML = '<p id="asciiContainer"></p>';
     this.asciiContainer = document.getElementById('asciiContainer');
-    this.field = super.generateEmptyField();
+    this.field = this.auxiliarFunctions.generateEmptyField();
     this.lastDisplayHTML = '';
   }
 
@@ -58,7 +66,7 @@ class Engine extends AuxiliarFunctions {
     field.forEach((row, rowIndex) => {
       displayField.push([]);
       row.forEach((cell, columnIndex) => {
-        displayField[rowIndex].push('<span onclick="'+cell[1]+'" id="'+'x'+columnIndex+'y'+rowIndex+'">'+cell[0]+'</span>');
+        displayField[rowIndex].push('<span style="color:'+cell[1]+'" id="'+'x'+columnIndex+'y'+rowIndex+'">'+cell[0]+'</span>');
       });
     });
 
@@ -104,7 +112,7 @@ class GameObject {
       if (roundY <= rowIndex && rowIndex < roundY + height) {
         row.forEach((cell, columnIndex) => {
           if (roundX <= columnIndex && columnIndex < roundX + width) {
-            field[rowIndex][columnIndex][0] = this.sprite[rowIndex - roundY][columnIndex - roundX];
+            field[rowIndex][columnIndex] = this.sprite[rowIndex - roundY][columnIndex - roundX];
           }
         });
       }
@@ -122,9 +130,9 @@ class Game extends Engine {
 
   init() {
     this.player = new GameObject(3, 3);
-    this.player.sprite = [['o', 'o', 'o'],
-                          ['o', 'X', 'o'],
-                          ['o', 'o', 'o']];
+    this.player.sprite = [[['/',"red"], ['-',"red"], ['\\',"red"]],
+                          [['|',"red"], ['X',"green"], ['|',"red"]],
+                          [['\\',"red"], ['-',"red"], ['/',"red"]]];
   }
 
   update() {
@@ -133,10 +141,12 @@ class Game extends Engine {
   }
 
   draw() {
-    this.field = super.generateEmptyField();
+    this.field = this.auxiliarFunctions.generateEmptyField();
     this.field = this.player.draw(this.field);
   }
 }
 
 var game = new Game('gameDiv');
 game.start(12);
+
+

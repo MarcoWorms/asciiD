@@ -2,6 +2,7 @@
 A HTML5 ASCII game engine built with love and ES6
 
 Intended features to be developed (in priority order):  
+- DeltaTime on update
 - Sprite loader, it will load a .txt file and add to the GameObject.sprite[0]
 - Spritesheet loader, same as the sprite loader but will add each frame to an index of Gameobject.sprite[]
 - Play/Stop animation from spritesheet with a framerate handler
@@ -12,6 +13,12 @@ Intended features to be developed (in priority order):
 - Independent camera, this will allow the field to be as big as you want, only rendering the parts you need.
 - Ascii sprite and spritesheet editor made for this engine (the dream)
 - Import spritesheets from pastebin (or another pastie site)
+
+Current features:
+- Good ol' init/update/draw loop
+- DOM will not be updated if the HTML generated from "field" hasn't changed.
+- Each cell from the gameobject sprite have independent colors.
+- Basic x/y grid, you can assign non-integer values to gameobject X and Y, but the display will always floor the values (only for display, the gameobject values will be intact)
 
 ## v0.0.2
 

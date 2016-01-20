@@ -12,7 +12,7 @@ Intended features to be developed (in priority order):
 - Independent camera, this will allow the field to be as big as you want, only rendering the parts you need.
 - Ascii sprite and spritesheet editor made for this engine (the dream)
 
-Alpha version preview
+# v0.02
 
 https://jsfiddle.net/0y2tfmsv/1/
 

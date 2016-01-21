@@ -38,6 +38,7 @@ v0.0.2 - 20/01/2016
 
 Intended features to be developed (in priority order):  
 - DeltaTime on update
+- Print text
 - Sprite loader, it will load a .txt file and add to the GameObject.sprite[0]
 - Spritesheet loader, same as the sprite loader but will add each frame to an index of Gameobject.sprite[]
 - Play/Stop animation from spritesheet with a framerate handler

@@ -34,6 +34,8 @@ v0.0.1 - 19/01/2016
 v0.0.2 - 20/01/2016  
 -Cells now have independent colors, you can use the css standard you like (name, hexadecimal or RGB)
 
+------------------
+
 Intended features to be developed (in priority order):  
 - DeltaTime on update
 - Sprite loader, it will load a .txt file and add to the GameObject.sprite[0]

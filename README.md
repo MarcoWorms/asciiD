@@ -1,5 +1,24 @@
-# asciiD
-A HTML5 ASCII game engine built with love and ES6
+<pre>          _____________   __________   ___________   ___   ___   _______________  
+         /xxxxxxxxxxxx/  /xxxxxxxxx/  /xxxxxxxxxx/  /xx/  /xx/  /xxxxxxxxxxxxxx/  
+        /xxxxxxxxxxxx/  /xxxxxxxxx/  /xxxxxxxxxx/  /xx/  /xx/  /xxxxxxxxxxxxxx/  
+       /xx/ \xxxxxxx/  /xx/ \xxxx/  /xx/ \xxxxx/  /xx/  /xx/  /xx/ \xxxxxxxxx/  
+      /xx/   \xxxxx/  /xx/   \xx/  /xx/   \xxx/  /xx/  /xx/  /xx/   \xxxxxxx/  
+     /xxx\____\xxx/   \xx\_____   |xx|     \x/  |xx|  |xx|  |xx|     \xxxxx/  
+    /xxxxxxxxxxxxx\    \xxxxxxx\  |xx|      |   |xx|  |xx|  |xx|      \xxx/  
+   /xxxxxxx/    \xx\         \xx\ |xx|      x   |xx|  |xx|  |xx|      /xx/  
+  /xx/\xxx/      \xx\  ___   /xx/  \xx\   ___   |xx|  |xx|  |xx|     /xx/  
+ /xx/  \x/        \xx\ \xx\_/xx/    \xx\_/xx/   |xx|  |xx|  |xx|    /xx/  
+/xx/    |          \xx\ \xxxxx/      \xxxxx/    |xx|  |xx|  |xx|   /xx/  
+\x/     |           \x/  \xxx/        \xxx/      \x/   \x/   \xx\ /xx/  
+ |      |            |    \x/          \x/        |     |     \xxxxx/  
+ |      |            |     |            |         x     |      \xxx/  
+ |      x            |     x            |               |       \x/  
+ |                   |                  |               x        |  
+ x                   |                  x                        |  
+                     |                                           |  
+                     |                                           x  
+                     |  
+                     x  </pre>
 
 Intended features to be developed (in priority order):  
 - DeltaTime on update

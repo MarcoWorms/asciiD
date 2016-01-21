@@ -20,6 +20,20 @@
                      |  
                      x  </pre>
 
+## v0.0.2
+
+Preview: https://jsfiddle.net/0y2tfmsv/1/
+
+![Alt text](http://i.imgur.com/HjnvMVc.png "Preview")
+
+Changelog:
+
+v0.0.1 - 19/01/2016  
+-Git init
+
+v0.0.2 - 20/01/2016  
+-Cells now have independent colors, you can use the css standard you like (name, hexadecimal or RGB)
+
 Intended features to be developed (in priority order):  
 - DeltaTime on update
 - Sprite loader, it will load a .txt file and add to the GameObject.sprite[0]
@@ -38,17 +52,3 @@ Current features:
 - DOM will not be updated if the HTML generated from "field" hasn't changed.
 - Each cell from the gameobject sprite have independent colors.
 - Basic x/y grid, you can assign non-integer values to gameobject X and Y, but the display will always floor the values (only for display, the gameobject values will be intact)
-
-## v0.0.2
-
-Preview: https://jsfiddle.net/0y2tfmsv/1/
-
-![Alt text](http://i.imgur.com/HjnvMVc.png "Preview")
-
-Changelog:
-
-v0.0.1 - 19/01/2016  
--Git init
-
-v0.0.2 - 20/01/2016  
--Cells now have independent colors, you can use the css standard you like (name, hexadecimal or RGB)

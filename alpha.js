@@ -36,15 +36,21 @@ class Engine {
   }
 
   start(fps) {
+    this.timeLastLoop = Date.now()
     this.fps = fps;
     this.init();
     this.loop();
   }
 
   loop() {
-    this.update();
+    let timeNow = Date.now()
+    let deltaTime = (timeNow - this.timeLastLoop) / 1000
+    this.timeLastLoop = timeNow
+
+    this.update(deltaTime);
     this.draw();
     this.drawFieldArray(this.field);
+
     window.setTimeout(this.loop.bind(this), 1000/this.fps);
   }
 
@@ -81,6 +87,13 @@ class Engine {
     }
 
     this.lastDisplayHTML = displayHTML;
+  }
+
+  print(field, text, fieldX, fieldY) {
+    for (var i = 0; i < text.length; i++) {
+      field[fieldY][fieldX + i] = text[i]
+    };
+    return field
   }
 
 }
@@ -135,18 +148,18 @@ class Game extends Engine {
                           [['\\',"red"], ['-',"red"], ['/',"red"]]];
   }
 
-  update() {
-    this.player.x += 0.3;
-    this.player.y += 0.1;
+  update(deltaTime) {
+    this.player.x += 3 * deltaTime;
+    this.player.y += 1 * deltaTime;
   }
 
   draw() {
     this.field = this.auxiliarFunctions.generateEmptyField();
     this.field = this.player.draw(this.field);
+    this.field = this.print(this.field, "ola", 10, 20)
   }
 }
 
 var game = new Game('gameDiv');
 game.start(12);
-
 

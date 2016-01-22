@@ -26,17 +26,6 @@ Preview: https://jsfiddle.net/0y2tfmsv/2/
 
 ![Alt text](http://i.imgur.com/bYZkACQ.png "Preview")
 
-Changelog:
-
-v0.0.1 - 19/01/2016 - https://jsfiddle.net/0y2tfmsv/  
--Git init
-
-v0.0.2 - 20/01/2016 - https://jsfiddle.net/0y2tfmsv/1/  
--Cells now have independent colors, you can use the css standard you like (name, hexadecimal or RGB)
-
-v0.0.3 - 22/01/2016 - https://jsfiddle.net/0y2tfmsv/2/  
--deltaTime is now sent to update(), print() function was added to print text.
-
 ------------------
 
 Intended features to be developed (in priority order):  
@@ -58,3 +47,16 @@ Current features:
 - DOM will not be updated if the HTML generated from "field" hasn't changed.
 - Each cell from the gameobject sprite have independent colors.
 - Basic x/y grid, you can assign non-integer values to gameobject X and Y, but the display will always floor the values (only for display, the gameobject values will be intact)
+
+------------------
+
+Changelog:
+
+v0.0.1 - 19/01/2016 - https://jsfiddle.net/0y2tfmsv/  
+-Git init
+
+v0.0.2 - 20/01/2016 - https://jsfiddle.net/0y2tfmsv/1/  
+-Cells now have independent colors, you can use the css standard you like (name, hexadecimal or RGB)
+
+v0.0.3 - 22/01/2016 - https://jsfiddle.net/0y2tfmsv/2/  
+-deltaTime is now sent to update(), print() function was added to print text.

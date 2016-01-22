@@ -22,19 +22,19 @@
 
 ## v0.0.3
 
-Preview: https://jsfiddle.net/0y2tfmsv/1/
+Preview: https://jsfiddle.net/0y2tfmsv/2/
 
-![Alt text](http://i.imgur.com/HjnvMVc.png "Preview")
+![Alt text](http://i.imgur.com/bYZkACQ.png "Preview")
 
 Changelog:
 
-v0.0.1 - 19/01/2016  
+v0.0.1 - 19/01/2016  - https://jsfiddle.net/0y2tfmsv/
 -Git init
 
-v0.0.2 - 20/01/2016  
+v0.0.2 - 20/01/2016 - https://jsfiddle.net/0y2tfmsv/1/
 -Cells now have independent colors, you can use the css standard you like (name, hexadecimal or RGB)
 
-v0.0.3 - 22/01/2016  
+v0.0.3 - 22/01/2016 - https://jsfiddle.net/0y2tfmsv/2/
 -deltaTime is now sent to update(), print() function was added to print text.
 
 ------------------

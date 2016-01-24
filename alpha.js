@@ -20,6 +20,28 @@ class AuxiliarFunctions {
 
     return field;
   }
+
+  print(field, text, fieldX, fieldY) {
+    for (var i = 0; i < text.length; i++) {
+      field[fieldY][fieldX + i] = text[i]
+    };
+    return field
+  }
+
+
+  loadSprite(fileName) {
+    let txt = '';
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+      if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+        txt = xmlhttp.responseText;
+        console.log(txt)
+      }
+    };
+    xmlhttp.open("GET", fileName, true);
+    xmlhttp.send();
+  }
+
 }
 
 class Engine {
@@ -89,13 +111,6 @@ class Engine {
     this.lastDisplayHTML = displayHTML;
   }
 
-  print(field, text, fieldX, fieldY) {
-    for (var i = 0; i < text.length; i++) {
-      field[fieldY][fieldX + i] = text[i]
-    };
-    return field
-  }
-
 }
 
 class GameObject {
@@ -146,6 +161,8 @@ class Game extends Engine {
     this.player.sprite = [[['/',"red"], ['-',"red"], ['\\',"red"]],
                           [['|',"red"], ['X',"green"], ['|',"red"]],
                           [['\\',"red"], ['-',"red"], ['/',"red"]]];
+    this.player2 = new GameObject(10, 10);
+    this.player2.sprite = this.auxiliarFunctions.loadSprite("tieshooter-sprite-test.txt")
   }
 
   update(deltaTime) {
@@ -156,7 +173,7 @@ class Game extends Engine {
   draw() {
     this.field = this.auxiliarFunctions.generateEmptyField();
     this.field = this.player.draw(this.field);
-    this.field = this.print(this.field, "ola", 10, 20)
+    this.field = this.auxiliarFunctions.print(this.field, "ola", 10, 20)
   }
 }
 

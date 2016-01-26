@@ -28,20 +28,6 @@ class AuxiliarFunctions {
     return field
   }
 
-
-  loadSprite(fileName) {
-    let txt = '';
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function(){
-      if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-        txt = xmlhttp.responseText;
-        console.log(txt)
-      }
-    };
-    xmlhttp.open("GET", fileName, true);
-    xmlhttp.send();
-  }
-
 }
 
 class Engine {
@@ -71,7 +57,7 @@ class Engine {
 
     this.update(deltaTime);
     this.draw();
-    this.drawFieldArray(this.field);
+    this.drawFieldToHTML(this.field);
 
     window.setTimeout(this.loop.bind(this), 1000/this.fps);
   }
@@ -88,13 +74,23 @@ class Engine {
     // draw logic, overrided on Game
   }
 
-  drawFieldArray(field) {
+  drawFieldToHTML(field) {
 
     let displayField = [];
     field.forEach((row, rowIndex) => {
       displayField.push([]);
       row.forEach((cell, columnIndex) => {
-        displayField[rowIndex].push('<span style="color:'+cell[1]+'" id="'+'x'+columnIndex+'y'+rowIndex+'">'+cell[0]+'</span>');
+        let cellDisplayChar = cell[0]
+        let cellDisplayColor = cell[1]
+
+        if (cellDisplayChar === " ") {
+          cellDisplayChar = "&nbsp"
+        }
+        if (cellDisplayColor === undefined) {
+          cellDisplayColor = "white"
+        }
+
+        displayField[rowIndex].push('<span style="color:'+cellDisplayColor+'" id="'+'x'+columnIndex+'y'+rowIndex+'">'+cellDisplayChar+'</span>');
       });
     });
 
@@ -114,22 +110,18 @@ class Engine {
 }
 
 class GameObject {
-  constructor(x, y, spriteFile) {
+  constructor(x, y) {
     this.name = name;
     this.x = x;
     this.y = y;
-  // needs fix //  this.sprite = spriteFile ? loadSprite(spriteFile) : [];
-  }
-
-  // loadSprite(spriteFile) {
-
-  // }
-
-  onclick() {
-
+    this.sprite = undefined;
   }
 
   draw(field) {
+
+    if (this.sprite === undefined) {
+      return field;
+    }
 
     let width = this.sprite[0].length;
     let height = this.sprite.length;
@@ -148,6 +140,33 @@ class GameObject {
 
     return field;
   }
+
+  loadSprite(fileName) {
+
+    let spriteLoader = new XMLHttpRequest();
+
+    spriteLoader.open('GET', fileName);
+    spriteLoader.onreadystatechange = function() {
+      if (spriteLoader.readyState === 4) {
+        let spriteAsText = spriteLoader.responseText;
+        let spriteAsTextSplitNewlines = spriteAsText.split('\n')
+
+        let spriteAsArray = []
+
+        spriteAsTextSplitNewlines.forEach(line => {
+          let spriteAsArrayLine = []
+          for (let i = 0; i < line.length; i++) {
+            spriteAsArrayLine.push([line[i]])
+          }
+          spriteAsArray.push(spriteAsArrayLine)
+        })
+
+        this.sprite = spriteAsArray
+      }
+    }.bind(this)
+    spriteLoader.send();
+
+  }
 }
 
 class Game extends Engine {
@@ -162,17 +181,19 @@ class Game extends Engine {
                           [['|',"red"], ['X',"green"], ['|',"red"]],
                           [['\\',"red"], ['-',"red"], ['/',"red"]]];
     this.player2 = new GameObject(10, 10);
-    this.player2.sprite = this.auxiliarFunctions.loadSprite("tieshooter-sprite-test.txt")
+    this.player2.loadSprite("tieshooter-sprite-test.txt")
   }
 
   update(deltaTime) {
     this.player.x += 3 * deltaTime;
     this.player.y += 1 * deltaTime;
+    this.player2.x += 5 * deltaTime;
   }
 
   draw() {
     this.field = this.auxiliarFunctions.generateEmptyField();
     this.field = this.player.draw(this.field);
+    this.field = this.player2.draw(this.field);
     this.field = this.auxiliarFunctions.print(this.field, "ola", 10, 20)
   }
 }

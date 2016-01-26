@@ -20,22 +20,20 @@
                      |  
                      x  </pre>
 
-## v0.0.3
+## v0.0.4
 
-Preview: https://jsfiddle.net/0y2tfmsv/2/
-
-![Alt text](http://i.imgur.com/bYZkACQ.png "Preview")
+![Alt text](http://imgur.com/wRmwGrC.png "Preview")
 
 ------------------
 
 Intended features to be developed (in priority order):  
 - DeltaTime on update (DONE)
 - Print text (DONE)
-- Sprite loader, it will load a .txt file and add to the GameObject.sprite\[0\] (INCOMING NEXT PATCH)
+- Sprite loader, it will load a .txt file and add to the GameObject.sprite\[0\] (DONE)
 - Spritesheet loader, same as the sprite loader but will add each frame to an index of Gameobject.sprite[]
 - Play/Stop animation from spritesheet with a framerate handler
 - Keyboard/Mouse input manager
-- Better overall structure of the engine (INCOMING NEXT PATCH)
+- Better overall structure of the engine
 - Collision detection
 - A more organized way to separate static objects (like background) from game objects (like a player or a monster)
 - Independent camera, this will allow the field to be as big as you want, only rendering the parts you need.
@@ -60,3 +58,6 @@ v0.0.2 - 20/01/2016 - https://jsfiddle.net/0y2tfmsv/1/
 
 v0.0.3 - 22/01/2016 - https://jsfiddle.net/0y2tfmsv/2/  
 -deltaTime is now sent to update(), print() function was added to print text.
+
+v0.0.4 - 26/01/2016 - No more fiddles for now. You also need a local server to be able to load sprites from .txts.
+-GameObjects now have the ability to load sprites from .txt files.

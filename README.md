@@ -59,5 +59,5 @@ v0.0.2 - 20/01/2016 - https://jsfiddle.net/0y2tfmsv/1/
 v0.0.3 - 22/01/2016 - https://jsfiddle.net/0y2tfmsv/2/  
 -deltaTime is now sent to update(), print() function was added to print text.
 
-v0.0.4 - 26/01/2016 - No more fiddles for now. You also need a local server to be able to load sprites from .txts.
+v0.0.4 - 26/01/2016 - No more fiddles for now. You also need a local server to be able to load sprites from .txt  
 -GameObjects now have the ability to load sprites from .txt files.

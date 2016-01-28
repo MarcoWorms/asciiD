@@ -32,7 +32,7 @@ Intended features to be developed (in priority order):
 - DeltaTime on update (DONE)
 - Print text (DONE)
 - Sprite loader, it will load a .txt file and add to the GameObject.sprite\[0\] (DONE)
-- Spritesheet loader, same as the sprite loader but will add each frame to an index of Gameobject.sprite[] (DONE)
+- Spritesheet loader, same as the sprite loader but will add each frame to an index of Gameobject.sprite\[\] (DONE)
 - Play/Stop animation from spritesheet with a framerate handler (BETA)
 - Keyboard/Mouse input manager
 - Better overall structure of the engine

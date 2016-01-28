@@ -20,9 +20,11 @@
                      |  
                      x  </pre>
 
-## v0.0.4
+## v0.0.5
 
-![Alt text](http://imgur.com/wRmwGrC.png "Preview")
+![Alt text](http://i.imgur.com/P05t8n5.png "Preview")
+
+![Alt text](http://i.imgur.com/uTbNDmk.gif "Preview")
 
 ------------------
 
@@ -30,8 +32,8 @@ Intended features to be developed (in priority order):
 - DeltaTime on update (DONE)
 - Print text (DONE)
 - Sprite loader, it will load a .txt file and add to the GameObject.sprite\[0\] (DONE)
-- Spritesheet loader, same as the sprite loader but will add each frame to an index of Gameobject.sprite[]
-- Play/Stop animation from spritesheet with a framerate handler
+- Spritesheet loader, same as the sprite loader but will add each frame to an index of Gameobject.sprite[] (DONE)
+- Play/Stop animation from spritesheet with a framerate handler (BETA)
 - Keyboard/Mouse input manager
 - Better overall structure of the engine
 - Collision detection
@@ -39,12 +41,15 @@ Intended features to be developed (in priority order):
 - Independent camera, this will allow the field to be as big as you want, only rendering the parts you need.
 - Ascii sprite and spritesheet editor made for this engine (the dream)
 - Import spritesheets from pastebin (or another pastie site)
+- Documentation
 
 Current features:
 - Good ol' init/update/draw loop
 - DOM will not be updated if the HTML generated from "field" hasn't changed.
 - Each cell from the gameobject sprite have independent colors.
 - Basic x/y grid, you can assign non-integer values to gameobject X and Y, but the display will always floor the values (only for display, the gameobject values will be intact)
+- Prints text
+- Loads sprites (and sheets) from .txt files (see the spritesheet.txt example on how to format them)
 
 ------------------
 
@@ -61,3 +66,6 @@ v0.0.3 - 22/01/2016 - https://jsfiddle.net/0y2tfmsv/2/
 
 v0.0.4 - 26/01/2016 - No more fiddles for now. You also need a local server to be able to load sprites from .txt  
 -GameObjects now have the ability to load sprites from .txt files.
+
+v0.0.5 - 28/01/2016 
+-GameObjects now have the ability to load spritessheets from .txt, the same function also loads single sprites so you should use "loadSpriteSheet()" for both needs. Animation is still a work in progress, but I just wanted to see it working :')

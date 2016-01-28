@@ -25,7 +25,7 @@ class AuxiliarFunctions {
     for (var i = 0; i < text.length; i++) {
       field[fieldY][fieldX + i] = text[i]
     };
-    return field
+    return field;
   }
 
 }
@@ -41,6 +41,7 @@ class Engine {
     this.asciiContainer = document.getElementById('asciiContainer');
     this.field = this.auxiliarFunctions.generateEmptyField();
     this.lastDisplayHTML = '';
+    this.framesSinceStart = 0;
   }
 
   start(fps) {
@@ -59,6 +60,7 @@ class Engine {
     this.draw();
     this.drawFieldToHTML(this.field);
 
+    this.framesSinceStart += 1;
     window.setTimeout(this.loop.bind(this), 1000/this.fps);
   }
 
@@ -111,20 +113,20 @@ class Engine {
 
 class GameObject {
   constructor(x, y) {
-    this.name = name;
     this.x = x;
     this.y = y;
-    this.sprite = undefined;
+    this.sprite = [];
+    this.currentFrame = 0;
   }
 
   draw(field) {
 
-    if (this.sprite === undefined) {
+    if (this.sprite[this.currentFrame] === undefined) {
       return field;
     }
 
-    let width = this.sprite[0].length;
-    let height = this.sprite.length;
+    let width = this.sprite[this.currentFrame][0].length;
+    let height = this.sprite[this.currentFrame].length;
     let roundX = Math.floor(this.x);
     let roundY = Math.floor(this.y);
 
@@ -132,7 +134,7 @@ class GameObject {
       if (roundY <= rowIndex && rowIndex < roundY + height) {
         row.forEach((cell, columnIndex) => {
           if (roundX <= columnIndex && columnIndex < roundX + width) {
-            field[rowIndex][columnIndex] = this.sprite[rowIndex - roundY][columnIndex - roundX];
+            field[rowIndex][columnIndex] = this.sprite[this.currentFrame][rowIndex - roundY][columnIndex - roundX];
           }
         });
       }
@@ -141,31 +143,56 @@ class GameObject {
     return field;
   }
 
-  loadSprite(fileName) {
+  loadSpriteSheet(fileName, spriteHeight) {
 
     let spriteLoader = new XMLHttpRequest();
 
     spriteLoader.open('GET', fileName);
     spriteLoader.onreadystatechange = function() {
       if (spriteLoader.readyState === 4) {
-        let spriteAsText = spriteLoader.responseText;
-        let spriteAsTextSplitNewlines = spriteAsText.split('\n')
-
-        let spriteAsArray = []
-
-        spriteAsTextSplitNewlines.forEach(line => {
-          let spriteAsArrayLine = []
-          for (let i = 0; i < line.length; i++) {
-            spriteAsArrayLine.push([line[i]])
+        let spriteSheetAsText = spriteLoader.responseText;
+        let spriteSheetAsLines = spriteSheetAsText.split('\n')
+        let spritesNumber = (spriteSheetAsLines.length + 1) / spriteHeight
+        let lastParsedLine = 0
+        for (let currentFrame = 0; currentFrame < spritesNumber - 1; currentFrame += 1) {
+          let currentSprite = []
+          let initialLine = 0 + lastParsedLine
+          let lastLine = spriteHeight + lastParsedLine
+          for (let i = initialLine; i < lastLine; i += 1) {
+            currentSprite.push(spriteSheetAsLines[i])
           }
-          spriteAsArray.push(spriteAsArrayLine)
-        })
-
-        this.sprite = spriteAsArray
+          lastParsedLine += spriteHeight;
+          currentSprite = currentSprite.join('\n')
+          this.insertSprite(currentSprite, currentFrame)
+        }
       }
     }.bind(this)
     spriteLoader.send();
 
+  }
+
+  insertSprite(spriteAsText, frame) {
+    let spriteAsTextSplitNewlines = spriteAsText.split('\n')
+    let spriteAsArray = []
+
+    spriteAsTextSplitNewlines.forEach(line => {
+      let spriteAsArrayLine = []
+      for (let i = 0; i < line.length; i++) {
+        spriteAsArrayLine.push([line[i]])
+      }
+      spriteAsArray.push(spriteAsArrayLine)
+    })
+
+    this.sprite[frame] = spriteAsArray
+  }
+
+  animate(framesSinceStart, frameInterval) {
+    if (framesSinceStart % frameInterval === 0) {
+      this.currentFrame +=1
+    }
+    if (this.currentFrame >= this.sprite.length) {
+      this.currentFrame = 0
+    }
   }
 }
 
@@ -177,17 +204,18 @@ class Game extends Engine {
 
   init() {
     this.player = new GameObject(3, 3);
-    this.player.sprite = [[['/',"red"], ['-',"red"], ['\\',"red"]],
+    this.player.sprite[0] = [[['/',"red"], ['-',"red"], ['\\',"red"]],
                           [['|',"red"], ['X',"green"], ['|',"red"]],
                           [['\\',"red"], ['-',"red"], ['/',"red"]]];
     this.player2 = new GameObject(10, 10);
-    this.player2.loadSprite("tieshooter-sprite-test.txt")
+    this.player2.loadSpriteSheet("tieshooter-spritesheet-test.txt", 8)
   }
 
   update(deltaTime) {
     this.player.x += 3 * deltaTime;
     this.player.y += 1 * deltaTime;
     this.player2.x += 5 * deltaTime;
+    this.player2.animate(this.framesSinceStart, 5)
   }
 
   draw() {

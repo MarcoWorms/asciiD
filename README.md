@@ -33,7 +33,7 @@ Intended features to be developed (in priority order):
 * [x] Print text  
 * [x] Sprite loader, it will load a .txt file and add to the GameObject.sprite[0]  
 * [x] Spritesheet loader, same as the sprite loader but will add each frame to an index of Gameobject.sprite[]  
-* [ ] Play/Stop animation from spritesheet with a framerate handler (BETA)  
+* [x] Play/Stop animation from spritesheet with a framerate handler (BETA)  
 * [ ] Keyboard/Mouse input manager  
 * [ ] Better overall structure of the engine  
 * [ ] Collision detection  

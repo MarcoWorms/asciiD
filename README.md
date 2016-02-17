@@ -28,7 +28,7 @@
 
 ------------------
 
-I'm currently trying to organize this code using modules and closures. If I succeed, this week the engine should have a whole new face.
+#### I'm currently trying to organize this code using modules and closures. If I succeed, this week the engine should have a whole new face.
 
 Intended features to be developed (in priority order):  
 * [x] DeltaTime on update  

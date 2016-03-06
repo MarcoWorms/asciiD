@@ -5,6 +5,7 @@ var asciiD = (function(){
   var field = null
   var last_display_html = ''
   var total_frames = 0
+  var game_globals = {}
   var game_states = {
     example_state : {
       init : () => {console.log('game state init')},
@@ -31,6 +32,10 @@ var asciiD = (function(){
     }
 
     return field;
+  }
+
+  function make_game_object(x, y) {
+    
   }
 
   function draw_to_html() {
@@ -73,7 +78,7 @@ var asciiD = (function(){
       game_states[current_game_state].update(dt)
       game_states[current_game_state].draw()
       draw_to_html()
-      
+      window.setTimeout(loop, 1000/fps);
   }
 
   return {
@@ -91,7 +96,7 @@ var asciiD = (function(){
     },
     start: (fps) => {
       fps = fps > 0 ? fps : 12
-      loop(fps, state)
+      loop(fps)
     },
     print: (text, x, y) => {
       for (var i = 0; i < text.length; i++) {

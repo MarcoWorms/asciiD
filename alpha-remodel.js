@@ -34,10 +34,6 @@ var asciiD = (function(){
     return field;
   }
 
-  function make_game_object(x, y) {
-    
-  }
-
   function draw_to_html() {
     let display_field = [];
     field.forEach((row, row_index) => {
@@ -46,6 +42,9 @@ var asciiD = (function(){
         let cell_display_char = cell[0]
         let cell_display_color = cell[1]
 
+        if (cell_display_char === undefined) {
+          console.log('missing sprite at row ' + row_index + ' column ' + column_index)
+        }
         if (cell_display_char === " ") {
           cell_display_char = "&nbsp"
         }
@@ -98,9 +97,41 @@ var asciiD = (function(){
       fps = fps > 0 ? fps : 12
       loop(fps)
     },
-    print: (text, x, y) => {
+    print: (text, _x, _y) => {
       for (var i = 0; i < text.length; i++) {
-        field[y][x + i] = text[i]
+        field[_y][_x + i] = text[i]
+      }
+    },
+    make_game_object: (_x, _y) => {
+      var x = _x
+      var y = _y
+      var sprite = []
+      var current_frame = 0
+      return {
+        draw: () => {
+          if (sprite[current_frame] === undefined) {
+            console.log('sprite not found')
+            return 
+          }
+
+          let width = sprite[current_frame][0].length;
+          let height = sprite[current_frame].length;
+          let round_x = Math.floor(x);
+          let round_y = Math.floor(y);
+
+          field.forEach((row, row_index) => {
+            if (round_y <= row_index && row_index < round_y + height) {
+              row.forEach((cell, column_index) => {
+                if (round_x <= column_index && column_index < round_x + width) {
+                  field[row_index][column_index] = sprite[current_frame][row_index - round_y][column_index - round_x]
+                }
+              })
+            }
+          })
+        },
+        insert_sprite: (sprite, frame) => {
+          sprite[frame] = sprite
+        }
       }
     }
   }

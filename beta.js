@@ -1,20 +1,22 @@
+// Nothing here is either final or considered correct.
+
 'use strict'
 
-function make_layer_generator(width, heigth) {
+var asciiD = {}
+
+asciiD.make_grid_generator = (width, heigth) => {
   return function(default_char) {
-    let layer = [];
+    let grid = [];
     for (let i = 0; i < height; i += 1) {
-      let layer_rows = [];
+      let grid_rows = [];
       for (let k = 0; k < width; k += 1) {
-        layer_rows.push(default_char);
+        grid_rows.push(default_char);
       }
-      layer.push(layer_rows);
+      grid.push(grid_rows);
     }
-    return layer;
+    return grid;
   }
 }
-
-var asciiD = {}
 
 asciiD.dom_interface = (function(){
 
@@ -30,7 +32,7 @@ asciiD.dom_interface = (function(){
     inject_canvas: (div_id) => {
       inject(div_id)
     },
-    draw_canvas: (final_grid) => {
+    draw_canvas: (final_layer) => {
 
     }
   }
@@ -42,14 +44,15 @@ asciiD.create_canvas = (div_id, width, height) => {
 
   asciiD.dom_interface.inject_canvas(div_id)
 
-  var generate_layer = make_layer_generator(width, height)  
-  var background_grid = {
-    display: generate_layer('x'),
-    color: generate_layer('white')
+  var generate_grid = asciiD.make_grid_generator(width, height)  
+
+  var background_layer = {
+    display: generate_grid('x'),
+    color: generate_grid('white')
   }
 
-  function loop() {
-
+  var all_layers = {
+    0: background_layer
   }
 
   return {

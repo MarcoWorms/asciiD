@@ -28,7 +28,7 @@
 
 ------------------
 
-#### Under heavy changes, check beta.js for progress.
+#### Under heavy changes, check progress in beta.js and future.md (Only avaiable in portuguese ATM for some reasons that will be addressed later).
 
 Current features:
 - Good ol' init/update/draw loop

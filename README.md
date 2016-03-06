@@ -28,22 +28,7 @@
 
 ------------------
 
-#### I'm currently trying to organize this code using modules and closures. If I succeed, this week the engine should have a whole new face.
-
-Intended features to be developed (in priority order):  
-* [x] DeltaTime on update  
-* [x] Print text  
-* [x] Sprite loader, it will load a .txt file and add to the GameObject.sprite[0]  
-* [x] Spritesheet loader, same as the sprite loader but will add each frame to an index of Gameobject.sprite[]  
-* [x] Play/Stop animation from spritesheet with a framerate handler (BETA)  
-* [ ] Keyboard/Mouse input manager  
-* [ ] Better overall structure of the engine  
-* [ ] Collision detection  
-* [ ] A more organized way to separate static objects (like background) from game objects (like a player or a monster)  
-* [ ] Independent camera, this will allow the field to be as big as you want, only rendering the parts you need.  
-* [ ] Ascii sprite and spritesheet editor made for this engine (the dream)  
-* [ ] Import spritesheets from pastebin (or another pastie site)  
-* [ ] Documentation
+#### Under heavy changes, check beta.js for progress.
 
 Current features:
 - Good ol' init/update/draw loop
@@ -52,6 +37,11 @@ Current features:
 - Basic x/y grid, you can assign non-integer values to gameobject X and Y, but the display will always floor the values (only for display, the gameobject values will be intact)
 - Prints text
 - Loads sprites (and sheets) from .txt files (see the spritesheet.txt example on how to format them)
+- DeltaTime on update 
+- Print text  
+- Sprite loader, it will load a .txt file and add to the GameObject.sprite[0] 
+- Spritesheet loader, same as the sprite loader but will add each frame to an index of Gameobject.sprite[]  
+- Play/Stop animation from spritesheet with a framerate handler (BETA)  
 
 ------------------
 

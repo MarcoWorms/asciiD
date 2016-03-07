@@ -5,7 +5,7 @@
 
 ## Conceitos principais:
 
-```Para manter nossa sanidade mental, toda vez que eu for me referir ao canvas do HTML5 eu utilizarei a tag <canvas>. Quando eu usar canvas normalmente eu estou me referindo ao canvas da AsciiD.```  
+ *Para manter nossa sanidade mental, toda vez que eu for me referir ao canvas do HTML5 eu utilizarei a tag \<canvas\>. Quando eu usar canvas normalmente eu estou me referindo ao canvas da AsciiD.*  
 
 
 - O novo propósito do projeto é a criação de uma framework capaz de fornecer um equivalente ao \<canvas\> em formato ascii. Você poderá injetar esses canvas em diversos DIVs separados na sua página (utilizando um canvas para cada componente) ou entao criar apenas um grande canvas e usar para toda a interface (como você faria normalmente em um jogo usando o \<canvas\>).  
@@ -16,6 +16,14 @@
 ### Grids
 
 Um "Grid" é uma array bidimensional.
+
+Exemplo de grid 2x2:  
+```javascript
+var grid = [["o", "o"], ["o", "o"]]
+```
+
+
+
 
 ### Layers
 

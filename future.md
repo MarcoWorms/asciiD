@@ -74,6 +74,18 @@ a grid de cor segue os padrões de cores que o CSS usa, você pode definir as co
 
 Mais grids serão adicionada conforme a nescessidade, uma das grids que provavelmente implementarei é a "onclick" que define os callbacks de click para cada elemento da grid de display.
 
+#### Collider
+
+O grid de colisão (collider) permite você criar a camada de colisao daquela layer. Ainda estou pensando como farei ele, mas provavelmente utilizarei `1` para habilitar colisao naquele elemento ou `0` para ignorar. Desse jeito você pode ter o controle sobre a colisao independente do display.
+
+```
+[
+    [0, 0]
+    [0, 1]
+]
+```
+no exemplo acima a layer de 2x2 somente acusaria colisão caso o elemento inferior direito colidisse com outro `1` de outra collision mask.
+
 ### Layers
 
 Uma layer é um conjunto de grids que especificam tudo que há dentro de uma layer.
@@ -86,6 +98,6 @@ Um container é um conjunto de layers que formam algo quando juntas, geralmente 
 
 ### Canvas
 
-O canvas renderiza e responde aos containers dentro dele.
+O canvas fornece uma API para os containers serem desenhados quando eles derem o "draw call", e cuida de funcoes que envolvem multiplos containers como por exemplo detecção de colisão.
 
 *continua...*

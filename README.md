@@ -1,3 +1,8 @@
+## Introdução
+- No ínicio, a minha ideia era criar uma engine/framework para desenvolver jogos html5 focados em [arte ascii](https://pt.wikipedia.org/wiki/ASCII_art). Após conseguir fazer as funções básicas eu estava relativamente satisfeito com o que ja dava pra ser feito nela, mas depois de estudar mais JS eu percebi que a utilizaçao do "class" é horrível e decidi reescrever usando módulos e "factory functions". Enquanto eu estava reescrevendo percebi que poderia tomar um rumo melhor, então esse documento será um registro dos planejamentos futuros desse projeto. A documentação sobre o futuro do projeto pode ser encontrada no arquivo [future.md](https://github.com/MarcoWorms/asciiD/blob/master/future.md)
+
+------
+
 <pre>          _____________   __________   ___________   ___   ___   _______________  
          /xxxxxxxxxxxx/  /xxxxxxxxx/  /xxxxxxxxxx/  /xx/  /xx/  /xxxxxxxxxxxxxx/  
         /xxxxxxxxxxxx/  /xxxxxxxxx/  /xxxxxxxxxx/  /xx/  /xx/  /xxxxxxxxxxxxxx/  
@@ -27,8 +32,6 @@
 ![Alt text](http://i.imgur.com/uTbNDmk.gif "Preview")
 
 ------------------
-
-#### Under heavy changes, check progress in beta.js and future.md (Only avaiable in portuguese ATM for some reasons that will be addressed later).
 
 Current features:
 - Good ol' init/update/draw loop

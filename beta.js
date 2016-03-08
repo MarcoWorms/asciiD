@@ -4,23 +4,22 @@
 
 var asciiD = {}
 
-asciiD.make_grid_generator = (width, heigth) => {
-  return function(default_char) {
-    let grid = [];
+asciiD.make_grid_generator = (width, height) => {
+  return function (default_char) {
+    let grid = []
     for (let i = 0; i < height; i += 1) {
-      let grid_rows = [];
+      let grid_rows = []
       for (let k = 0; k < width; k += 1) {
-        grid_rows.push(default_char);
+        grid_rows.push(default_char)
       }
-      grid.push(grid_rows);
+      grid.push(grid_rows)
     }
-    return grid;
+    return grid
   }
 }
 
-asciiD.dom_interface = (function(){
-
-  var ascii_canvas = null
+asciiD.dom_interface = (function () {
+  //var ascii_canvas = null
 
   function inject(div_id){
     let canvas_parent = document.getElementById(div_id);

@@ -27,14 +27,9 @@ var grid_3x3 = [["x", "x", "x"], ["x", "x", "x"], ["x", "x", "x"]]
 
 esses grids representam respectivamente:
 ```
-oo
-oo
-```
-e
-```
-xxx
-xxx
-xxx
+oo                        xxx
+oo           e            xxx
+                          xxx
 ```
 
 Na AsciiD cada grid representa uma propriedade de uma layer. Cada layer deve ter apenas uma grid para cada propriedade. Uma layer pode não conter nenhuma grid, mas nesse caso ela será uma layer vazia.
@@ -88,13 +83,25 @@ no exemplo acima a layer de 2x2 somente acusaria colisão caso o elemento inferi
 
 ### Layers
 
-Uma layer é um conjunto de grids que especificam tudo que há dentro de uma layer.
+Uma layer é um conjunto de grids que especificam tudo que há dentro de uma layer. Cada layer contém apenas uma grid para cada propriedade. Cada layer deve representar uma camada do seu desenho, você pode optar por ter apenas uma layers por, mas conforme a complexidade do desenho aumenta a nescessidade de mais layers aparecerá. Você pode (e deve) abusar da quantidade de layers dentro de um container uma vez que eles permitirão ações aplicaveis para todas as layers dentro dele.
 
-*continua...*
+Dentro de uma layer você encontrará a "receita" dela, ou seja, o conjunto de grids que compõe ela. Essa receita terá mais ou menos essa forma:
+
+```javascript
+var receita = {
+    display: grid_de_display,
+    color: grid_de_cor,
+    collider: grid_de_colisao
+}
+```
+
+A AsciiD fornecerá funções auxíliares para a criação de grids e layers.
 
 ### Container
 
 Um container é um conjunto de layers que formam algo quando juntas, geralmente são os objetos ou componentes do programa, um objeto "Player" por exemplo deve ser um container. Os containers tambem contem a lógica de atualizacao desse objeto, dentro dele existirá um equivalente ao "update()" das engines atuais que sera chamado uma vez por frame. A framerate de cada container é independente, uma vez que utilizarei calls assíncronas para realizar os desenhos no canvas.
+
+O container tambem contém uma altura e largura que deverá ser respeitada pelas layers e grids dentro dele, ou seja, um container 5x7 somente permitirá layers compostas de grids 5x7. Caso voce nao respeite o tamano do container, o console mostrará um warning mas seu programa não irá parar, em caso de falta de elemento a AsciiD preenchera a grid com elemento vazio, elementos a mais serão ignorados.
 
 ### Canvas
 

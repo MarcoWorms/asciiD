@@ -2,15 +2,9 @@
 ##### *Essa documentação está em desenvolvimento, incompleta e sujeita a mudanças inesperadas*
 ---
 
+A ideia pra essa framework é criar um ambiente online colaborativo entre artistas e programadores para criação de jogos com [arte ascii](ttps://pt.wikipedia.org/wiki/ASCII_art), ao editar o jogo (por meio de uma IDE open-source na web) o autor pode trocar entre o modo artista e o modo programador. Artistas podem fazer diversas artes ascii e subirem para o repositório de artes, os programadores programam componentes e sobem no repositório de componentes, ambos repositórios estarão disponíveis dentro da IDE para uso em qualquer projeto.
+
 ## Conceitos principais:
-
- *Para manter nossa sanidade mental, toda vez que eu for me referir ao canvas do HTML5 eu utilizarei a tag \<canvas\>. Quando eu usar canvas normalmente eu estou me referindo ao canvas da AsciiD.*  
-
-
-- O novo propósito do projeto é a criação de uma framework capaz de fornecer um equivalente ao [\<canvas\>](https://developer.mozilla.org/pt-BR/docs/Web/Guide/HTML/Canvas_tutorial) para desenvolvimento de aplicativos ou jogos com [arte ascii](https://pt.wikipedia.org/wiki/ASCII_art). Você poderá injetar esses canvas em diversos DIVs separados na sua página (utilizando um canvas para cada componente da aplicação) ou entao criar apenas um grande canvas e usar para toda a interface (como você faria normalmente em um jogo usando o \<canvas\>).  
-
-
-- Você é livre pra escolher se prefere um canvas ou múltiplos, a escolha geralmente vai depender do design do projeto.
 
 ### Grids
 
@@ -81,7 +75,7 @@ no exemplo acima a layer de 2x2 somente acusaria colisão caso o elemento inferi
 
 ### Layers
 
-Uma layer é um conjunto de grids que especificam tudo que há dentro de uma layer. Cada layer contém apenas uma grid para cada propriedade. Cada layer deve representar uma camada do seu desenho, você pode optar por ter apenas uma layers por, mas conforme a complexidade do desenho aumenta a nescessidade de mais layers aparecerá. Você pode (e deve) abusar da quantidade de layers dentro de um container uma vez que eles permitirão ações aplicaveis para todas as layers dentro dele.
+Uma layer é um conjunto de grids que especificam tudo que há dentro de uma layer. Cada layer contém apenas uma grid para cada propriedade. Cada layer deve representar uma camada do seu desenho, você pode optar por ter apenas uma layers por, mas conforme a complexidade do desenho aumenta a nescessidade de mais layers aparecerá. Você pode (e deve) abusar da quantidade de layers dentro de um component uma vez que eles permitirão ações aplicaveis para todas as layers dentro dele.
 
 Dentro de uma layer você encontrará a "receita" dela, ou seja, o conjunto de grids que compõe ela. Essa receita terá mais ou menos essa forma:
 
@@ -95,14 +89,12 @@ var receita = {
 
 A AsciiD fornecerá funções auxíliares para a criação de grids e layers.
 
-### Container
+### Component
 
-Um container é um conjunto de layers que formam algo quando juntas, geralmente são os objetos ou componentes do programa, um objeto "Player" por exemplo deve ser um container. Os containers tambem contem a lógica de atualizacao desse objeto, dentro dele existirá um equivalente ao "update()" das engines atuais que sera chamado uma vez por frame. A framerate de cada container é independente, uma vez que utilizarei calls assíncronas para realizar os desenhos no canvas.
-
-O container tambem contém uma altura e largura que deverá ser respeitada pelas layers e grids dentro dele, ou seja, um container 5x7 somente permitirá layers compostas de grids 5x7. Caso voce nao respeite o tamano do container, o console mostrará um warning mas seu programa não irá parar, em caso de falta de elemento a AsciiD preenchera a grid com elemento vazio, elementos a mais serão ignorados.
+Um component é um conjunto de layers que formam algo quando juntas, geralmente são os objetos do programa, um objeto "Player" por exemplo deve ser um component. Os components tambem contem a lógica de atualizacao desse objeto, dentro dele existirá um equivalente ao "update()" das engines atuais que sera chamado uma vez por frame. A framerate de cada component é independente, uma vez que utilizarei calls assíncronas para realizar os desenhos no canvas.
 
 ### Canvas
 
-O canvas fornece uma API para os containers serem desenhados quando eles derem o "draw call", e cuida de funcoes que envolvem multiplos containers como por exemplo detecção de colisão.
+O canvas fornece uma API para os components serem desenhados quando eles derem o "draw call", e cuida de funcoes que envolvem multiplos components como por exemplo detecção de colisão.
 
 *continua...*

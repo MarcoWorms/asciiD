@@ -20,7 +20,8 @@ function Layer (width, height, props) {
   var defaultProps = {
     display: '',
     color: 'black',
-    collider: '1'
+    collider: '1',
+    displaySize: [width, height]
   }
   Object.assign(defaultProps, props)
   var Grid = GridFactory(width, height)
@@ -44,4 +45,4 @@ function Component (canvasId, width, height) {
 
 var component = Component(10, 10)
 
-console.log(container)
+console.log(component)

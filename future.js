@@ -7,42 +7,78 @@ function makeArray (nElements, defaultValue) {
 }
 
 function GridFactory (width, height, defaultValue) {
-  return (value) => {
+  function makeGrid (value) {
     if (value === undefined) { value = defaultValue }
     var grid = makeArray(height).map(() => {
       return makeArray(width, value)
     })
     return grid
   }
+
+  return makeGrid
 }
 
-function Layer (width, height, props) {
-  var defaultProps = {
-    display: '',
+function Layer (width, height, gridValues) {
+  var _gridValues = {
+    display: 'x',
     color: 'black',
-    collider: '1',
-    displaySize: [width, height]
+    collider: '1'
   }
-  Object.assign(defaultProps, props)
-  var Grid = GridFactory(width, height)
-  return {
+  Object.assign(_gridValues, gridValues)
+  var makeGrid = GridFactory(width, height)
+  var layer = {
     grids: {
-      display: Grid(defaultProps.display),
-      color: Grid(defaultProps.color),
-      collider: Grid(defaultProps.collider)
+      display: makeGrid(_gridValues.display),
+      color: makeGrid(_gridValues.color),
+      collider: makeGrid(_gridValues.collider)
     }
   }
+  return layer
 }
 
-function Component (canvasId, width, height) {
-  var layers = []
+var domController = (function () {
+  var allCanvas = document.getElementsByClassName('asciid')
+
+  function render (layer, canvasId) {
+    if (allCanvas[canvasId] === undefined) {
+      console.log('canvas "' + canvasId + '" was not found')
+    } else {
+      var canvasElement = allCanvas[canvasId]
+    // TODO : render to html
+    }
+  }
+
   return {
-    createLayer: () => {
-      layers.push(Layer(width, height))
+    draw: (layer, canvasId) => {
+      render(layer, canvasId)
+    }
+  }
+}())
+
+function Component (name, width, height, canvasId) {
+  if (canvasId === undefined) { canvasId = 0; }
+
+  var allLayers = []
+
+  function rasterize () {
+    if (allLayers.toString === '') {
+      console.log('no layers found in component ' + name)
+    } else {
+      // TODO : rasterize layers for display
+    }
+  }
+
+  return {
+    createLayer: (gridValues) => {
+      allLayers.push(Layer(width, height, gridValues))
+    },
+    draw: () => {
+      var rasterizedLayer = rasterize(allLayers)
+      domController.draw(rasterizedLayer, canvasId)
     }
   }
 }
 
-var component = Component(10, 10)
+var component = Component('player', 10, 10)
 
 console.log(component)

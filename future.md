@@ -2,7 +2,7 @@
 ##### *Essa documentação está em desenvolvimento, incompleta e sujeita a mudanças inesperadas*
 ---
 
-A ideia pra essa framework é criar um ambiente online colaborativo entre artistas e programadores para criação de jogos com [arte ascii](ttps://pt.wikipedia.org/wiki/ASCII_art), ao editar o jogo (por meio de uma IDE open-source na web) o autor pode trocar entre o modo artista e o modo programador. Artistas podem fazer diversas artes ascii e subirem para o repositório de artes, os programadores programam componentes e sobem no repositório de componentes, ambos repositórios estarão disponíveis dentro da IDE para uso em qualquer projeto.
+Proposta: criar um ambiente de desenvolvimento de jogos 2D com [arte ascii](ttps://pt.wikipedia.org/wiki/ASCII_art)
 
 ## Conceitos principais:
 
@@ -89,12 +89,28 @@ var receita = {
 
 A AsciiD fornecerá funções auxíliares para a criação de grids e layers.
 
+A atual função para criar layers é:
+
+```javascript
+Layer(width, height, gridvalues)
+```
+
+onde gridValues representa o objeto da receita, caso algum (ou nenhum) valor seja passado, a receita padrão é:
+
+```javascript
+{
+    display: 'x',
+    color: 'black',
+    collider: '1'
+}
+```
+
 ### Component
 
-Um component é um conjunto de layers que formam algo quando juntas, geralmente são os objetos do programa, um objeto "Player" por exemplo deve ser um component. Os components tambem contem a lógica de atualizacao desse objeto, dentro dele existirá um equivalente ao "update()" das engines atuais que sera chamado uma vez por frame. A framerate de cada component é independente, uma vez que utilizarei calls assíncronas para realizar os desenhos no canvas.
+Um component é um conjunto de layers que formam algo quando juntas, geralmente são os objetos do programa, um objeto "Player" por exemplo deve ser um component. Os components tambem contem a lógica de atualizacao desse objeto, dentro dele existirá um equivalente ao "update()" das engines atuais que sera chamado uma vez por frame. A framerate de cada component é independente, uma vez que utilizarei calls assíncronas para realizar os desenhos.
 
-### Canvas
+### DOM Controller
 
-O canvas fornece uma API para os components serem desenhados quando eles derem o "draw call", e cuida de funcoes que envolvem multiplos components como por exemplo detecção de colisão.
+O DOM controller receberá as calls de draw dos components e desenhará no canvas desejado (por padrão ele desenha no primeiro canvas que achar no html)
 
 *continua...*

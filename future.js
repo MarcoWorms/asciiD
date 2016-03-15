@@ -55,7 +55,7 @@ var domController = (function () {
   }
 }())
 
-function Component (name, width, height, canvasId) {
+function Component (name, canvasId) {
   if (canvasId === undefined) { canvasId = 0; }
 
   var allLayers = []
@@ -69,7 +69,7 @@ function Component (name, width, height, canvasId) {
   }
 
   return {
-    createLayer: (gridValues) => {
+    newLayer: (width, height, gridValues) => {
       allLayers.push(Layer(width, height, gridValues))
     },
     draw: () => {
@@ -79,6 +79,6 @@ function Component (name, width, height, canvasId) {
   }
 }
 
-var component = Component('player', 10, 10)
+var player = Component('player')
 
-console.log(component)
+console.log(player)

@@ -61,7 +61,7 @@ a grid de cor segue os padrões de cores que o CSS usa, você pode definir as co
 
 Mais grids serão adicionada conforme a nescessidade, uma das grids que provavelmente implementarei é a "onclick" que define os callbacks de click para cada elemento da grid de display.
 
-#### Collider
+#### - Collider
 
 O grid de colisão (collider) permite você criar a camada de colisao daquela layer. Ainda estou pensando como farei ele, mas provavelmente utilizarei `1` para habilitar colisao naquele elemento ou `0` para ignorar. Desse jeito você pode ter o controle sobre a colisao independente do display.
 

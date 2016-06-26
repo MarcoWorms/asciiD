@@ -1,5 +1,5 @@
 ## Introdução
-- No ínicio, a minha ideia era criar uma engine/framework para desenvolver jogos html5 focados em [arte ascii](https://pt.wikipedia.org/wiki/ASCII_art). Após conseguir fazer as funções básicas eu estava relativamente satisfeito com o que ja dava pra ser feito nela, mas depois de estudar mais JS eu percebi que a utilizaçao do "class" é horrível e decidi reescrever usando módulos e "factory functions". Enquanto eu estava reescrevendo percebi que poderia tomar um rumo melhor, esse rumo está sendo teorizado no arquivo [future.md](https://github.com/MarcoWorms/asciiD/blob/master/future.md)
+[future.md](https://github.com/MarcoWorms/asciiD/blob/master/future.md)
 
 ------
 

@@ -1,5 +1,4 @@
 ## Introdução
-[future.md](https://github.com/MarcoWorms/asciiD/blob/master/future.md)
 
 ------
 
